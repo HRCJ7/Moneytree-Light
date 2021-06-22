@@ -44,6 +44,8 @@ class AccountsFragment : BaseFragment<AccountsViewModel>(), TransactionListener 
     }
 
     override fun setupView(view: View) {
+        // Here check data is stored or not.According to that data fetching method get decided.
+        // Two types of data source is available 1.File 2.Local database
         if (sharedPreferences.getBoolean("ACCOUNTS_STORED", false)) {
             viewModel.fetchAccountDataFromDatabase()
         } else {

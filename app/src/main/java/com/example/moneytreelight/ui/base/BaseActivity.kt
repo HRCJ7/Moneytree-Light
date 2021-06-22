@@ -10,7 +10,6 @@ import com.example.moneytreelight.di.module.ActivityModule
 import javax.inject.Inject
 
 /**
- * Reference for generics: https://kotlinlang.org/docs/reference/generics.html
  * Basically BaseActivity will take any class that extends BaseViewModel
  */
 abstract class BaseActivity<VM : BaseViewModel> : AppCompatActivity() {

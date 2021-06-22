@@ -11,13 +11,22 @@ import io.reactivex.rxjava3.core.Single
 class LocalFileService(private val context: Context) : AccountDataService, TransactionDataService {
     private val gson = Gson()
 
+    /**
+     * This method fetch account data from accounts.json file
+     * @return Single<AccountListModel> return Single Observable
+     */
     override fun fetchAccountData(): Single<AccountListModel> {
         val json: String =
-                context.assets.open("accounts.json").bufferedReader().use { it.readText() }
+            context.assets.open("accounts.json").bufferedReader().use { it.readText() }
         val accountList = gson.fromJson(json, AccountListModel::class.java)
         return Single.just(accountList)
     }
 
+    /**
+     * This method fetch transaction data from the given files.This select each file according to the id number.
+     * @param id selected account id
+     * @return Single<TransactionListModel> return Single Observable
+     */
     override fun fetchTransactionData(id: Int?): Single<TransactionListModel> {
         var fileName = "transactions_3.json"
 
@@ -28,7 +37,7 @@ class LocalFileService(private val context: Context) : AccountDataService, Trans
         }
 
         val json: String =
-                context.assets.open(fileName).bufferedReader().use { it.readText() }
+            context.assets.open(fileName).bufferedReader().use { it.readText() }
         val transactionList = gson.fromJson(json, TransactionListModel::class.java)
         return Single.just(transactionList)
     }

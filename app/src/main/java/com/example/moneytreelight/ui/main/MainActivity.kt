@@ -22,7 +22,6 @@ class MainActivity : BaseActivity<MainViewModel>() {
         setSupportActionBar(toolbar)
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val navHostFragment =

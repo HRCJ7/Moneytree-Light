@@ -10,8 +10,11 @@ import com.example.moneytreelight.R
 import com.example.moneytreelight.data.local.db.entity.TransactionEntity
 import kotlinx.android.synthetic.main.recyclerview_item_transaction.view.*
 
-class TransactionAdapter(private var transactionList: List<TransactionEntity>, var currency: String) :
-        RecyclerView.Adapter<TransactionAdapter.TransactionHolder>() {
+class TransactionAdapter(
+    private var transactionList: List<TransactionEntity>,
+    var currency: String
+) :
+    RecyclerView.Adapter<TransactionAdapter.TransactionHolder>() {
 
     @ExperimentalStdlibApi
     override fun onBindViewHolder(holder: TransactionHolder, position: Int) {
@@ -20,8 +23,8 @@ class TransactionAdapter(private var transactionList: List<TransactionEntity>, v
     }
 
     override fun onCreateViewHolder(
-            parent: ViewGroup,
-            viewType: Int
+        parent: ViewGroup,
+        viewType: Int
     ): TransactionHolder {
         val inflatedView = parent.inflate(R.layout.recyclerview_item_transaction, false)
         return TransactionHolder(inflatedView)
@@ -50,6 +53,11 @@ class TransactionAdapter(private var transactionList: List<TransactionEntity>, v
             }
         }
 
+        /**
+         * This method to use to get required date format which is shown in transaction page
+         * @param dateString ex: 2017-08-22T00:00:00+09:00
+         * @return ex: 22th
+         */
         private fun getMonthAndYear(dateString: String): String {
             val date = dateString.subSequence(8, 10).toString().toInt()
             var dateInWord = ""
@@ -64,6 +72,11 @@ class TransactionAdapter(private var transactionList: List<TransactionEntity>, v
             return dateInWord
         }
 
+        /**
+         * This method is use to decode encoded description
+         * @param text ex: \u55d6\u5f15
+         * @return human readable text
+         */
         @ExperimentalStdlibApi
         private fun getDecodedString(text: String): String {
             val byteArray: ByteArray = text.toByteArray()

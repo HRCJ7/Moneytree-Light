@@ -46,6 +46,7 @@ class AccountsAdapter(private var accountList: List<AccountEntity>, private var 
             this.account = account
             this.transactionListener = transactionListener
             view.tv_name.text = account.name
+            // Added currency in front of the value ex: JPY1230
             view.tv_amount.text = account.currency + account.currentBalance
         }
 

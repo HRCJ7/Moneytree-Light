@@ -54,6 +54,11 @@ class TransactionGroupAdapter(private var transactionGroupList: List<Transaction
             }
         }
 
+        /**
+         * This method to use to get required month and year format which is shown in transaction page
+         * @param dateString ex: 2017-08-22T00:00:00+09:00
+         * @return ex: August 2017
+         */
         private fun getMonthAndYear(date: String): String {
             val year = date.subSequence(0, 4)
             val month = date.subSequence(5, 7).toString().toInt()
@@ -75,6 +80,9 @@ class TransactionGroupAdapter(private var transactionGroupList: List<Transaction
             return "$monthInWord $year"
         }
 
+        /**
+         * Calculate total deposited transaction in selected account
+         */
         private fun getDepositValue(transactionList: List<TransactionEntity>): Float {
             var total = 0.0F
             transactionList.forEach {
@@ -85,6 +93,10 @@ class TransactionGroupAdapter(private var transactionGroupList: List<Transaction
             return total
         }
 
+
+        /**
+         * Calculate total withdrawal transaction in selected account
+         */
         private fun getWithdrawalValue(transactionList: List<TransactionEntity>): Float {
             var total = 0.0F
             transactionList.forEach {

@@ -60,13 +60,17 @@ class TransactionFragment : BaseFragment<TransactionViewModel>() {
         super.onCreate(savedInstanceState)
 
         val arg = arguments?.let { TransactionFragmentArgs.fromBundle(it) }
+        name = arg?.name
+        currency = arg?.currency
+
+        // Here check data is stored or not.According to that data fetching method get decided.
+        // Two types of data source is available 1.File 2.Local database
         if (sharedPreferences.getBoolean("TRANSACTIONS_STORED", false)) {
             viewModel.fetchTransactionDataFromDatabase(arg?.id)
         } else {
+            // Need to access two json files to fetch transaction data.
             viewModel.fetchTransactionDataFromFile(1)
             viewModel.fetchTransactionDataFromFile(2)
         }
-        name = arg?.name
-        currency = arg?.currency
     }
 }

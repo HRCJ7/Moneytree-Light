@@ -35,10 +35,6 @@ class ApplicationModule(private val application: MoneytreeApplication) {
     @Singleton
     fun provideLocalFileService(): LocalFileService = LocalFileService(application)
 
-    /**
-     * We need to write @Singleton on the provide method if we are create the instance inside this method
-     * to make it singleton. Even if we have written @Singleton on the instance's class
-     */
     @Provides
     @Singleton
     fun provideDatabaseService(): DatabaseService =

@@ -39,6 +39,9 @@ class TransactionViewModel(
         return total
     }
 
+    /**
+     * This method use to fetch data from local database
+     */
     fun fetchTransactionDataFromDatabase(id: Int?) {
         loading.postValue(true)
         compositeDisposable.addAll(
@@ -64,6 +67,9 @@ class TransactionViewModel(
         )
     }
 
+    /**
+     * This method use to fetch transaction data from local file.
+     */
     fun fetchTransactionDataFromFile(id: Int?) {
         loading.postValue(true)
         compositeDisposable.addAll(
@@ -98,6 +104,9 @@ class TransactionViewModel(
         )
     }
 
+    /**
+     * This method use to store data in local database
+     */
     private fun storeTransactionData(id: Int?, transactionList: List<TransactionEntity>) {
         loading.postValue(true)
         val editor = sharedPreferences.edit()
@@ -118,11 +127,14 @@ class TransactionViewModel(
         )
     }
 
+    /**
+     * Use this method to clear transaction table in case of failure of data inserting or local file data fetching
+     */
     private fun deleteTransactionTable() {
         compositeDisposable.addAll(
-                databaseService.transactionDao().deleteAll()
-                        .subscribeOn(Schedulers.io())
-                        .subscribe {}
+            databaseService.transactionDao().deleteAll()
+                .subscribeOn(Schedulers.io())
+                .subscribe {}
         )
     }
 }

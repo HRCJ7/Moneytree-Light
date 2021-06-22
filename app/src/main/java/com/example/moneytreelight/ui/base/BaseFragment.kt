@@ -13,7 +13,6 @@ import com.example.moneytreelight.di.module.FragmentModule
 import javax.inject.Inject
 
 /**
- * Reference for generics: https://kotlinlang.org/docs/reference/generics.html
  * Basically BaseFragment will take any class that extends BaseViewModel
  */
 abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
