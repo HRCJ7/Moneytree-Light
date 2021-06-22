@@ -9,7 +9,7 @@ import com.google.gson.Gson
 import io.reactivex.rxjava3.core.Single
 
 class LocalFileService(private val context: Context) : AccountDataService, TransactionDataService {
-    val gson = Gson()
+    private val gson = Gson()
 
     override fun fetchAccountData(): Single<AccountListModel> {
         val json: String =

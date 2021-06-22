@@ -7,20 +7,21 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moneytreelight.R
-import com.example.moneytreelight.data.model.transaction.NewTransaction
+import com.example.moneytreelight.data.local.db.entity.TransactionEntity
 import kotlinx.android.synthetic.main.recyclerview_item_transaction.view.*
 
-class TransactionAdapter(private var transactionList: List<NewTransaction>, var currency: String) :
-    RecyclerView.Adapter<TransactionAdapter.TransactionHolder>() {
+class TransactionAdapter(private var transactionList: List<TransactionEntity>, var currency: String) :
+        RecyclerView.Adapter<TransactionAdapter.TransactionHolder>() {
 
+    @ExperimentalStdlibApi
     override fun onBindViewHolder(holder: TransactionHolder, position: Int) {
         val account = transactionList[position]
         holder.bindAccountGroup(account, currency)
     }
 
     override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
+            parent: ViewGroup,
+            viewType: Int
     ): TransactionHolder {
         val inflatedView = parent.inflate(R.layout.recyclerview_item_transaction, false)
         return TransactionHolder(inflatedView)
@@ -34,17 +35,18 @@ class TransactionAdapter(private var transactionList: List<NewTransaction>, var 
 
     class TransactionHolder(v: View) : RecyclerView.ViewHolder(v) {
         private var view: View = v
-        private var transaction: NewTransaction? = null
+        private var transaction: TransactionEntity? = null
 
+        @ExperimentalStdlibApi
         @SuppressLint("SetTextI18n")
-        fun bindAccountGroup(transaction: NewTransaction, currency: String) {
+        fun bindAccountGroup(transaction: TransactionEntity, currency: String) {
             this.transaction = transaction
-            view.date.text = getMonthAndYear(transaction.date)
-            view.description.text = getDecodedString(transaction.description)
+            view.tv_date.text = getMonthAndYear(transaction.date)
+            view.tv_description.text = getDecodedString(transaction.description)
             if (transaction.amount < 0) {
-                view.amount.text = "-" + currency + kotlin.math.abs(transaction.amount)
+                view.tv_amount.text = "-" + currency + kotlin.math.abs(transaction.amount)
             } else {
-                view.amount.text = currency + kotlin.math.abs(transaction.amount)
+                view.tv_amount.text = currency + kotlin.math.abs(transaction.amount)
             }
         }
 
@@ -62,6 +64,7 @@ class TransactionAdapter(private var transactionList: List<NewTransaction>, var 
             return dateInWord
         }
 
+        @ExperimentalStdlibApi
         private fun getDecodedString(text: String): String {
             val byteArray: ByteArray = text.toByteArray()
             return byteArray.decodeToString()

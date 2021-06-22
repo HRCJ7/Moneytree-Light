@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moneytreelight.R
-import com.example.moneytreelight.data.model.account.Account
+import com.example.moneytreelight.data.local.db.entity.AccountEntity
 import kotlinx.android.synthetic.main.recyclerview_item_account.view.*
 
-class AccountsAdapter (private var accountList: List<Account>, var transactionListener: TransactionListener) :
+class AccountsAdapter(private var accountList: List<AccountEntity>, private var transactionListener: TransactionListener) :
         RecyclerView.Adapter<AccountsAdapter.AccountHolder>() {
 
     override fun onBindViewHolder(holder: AccountHolder, position: Int) {
@@ -34,7 +34,7 @@ class AccountsAdapter (private var accountList: List<Account>, var transactionLi
 
     class AccountHolder(v: View) : RecyclerView.ViewHolder(v), View.OnClickListener {
         private var view: View = v
-        private var account: Account? = null
+        private var account: AccountEntity? = null
         private var transactionListener: TransactionListener? = null
 
         init {
@@ -42,11 +42,11 @@ class AccountsAdapter (private var accountList: List<Account>, var transactionLi
         }
 
         @SuppressLint("SetTextI18n")
-        fun bindAccountGroup(account: Account, transactionListener: TransactionListener) {
+        fun bindAccountGroup(account: AccountEntity, transactionListener: TransactionListener) {
             this.account = account
             this.transactionListener = transactionListener
-            view.name.text = account.name
-            view.amount.text = account.currency+account.currentBalance
+            view.tv_name.text = account.name
+            view.tv_amount.text = account.currency + account.currentBalance
         }
 
         override fun onClick(v: View?) {

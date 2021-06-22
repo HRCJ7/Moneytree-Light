@@ -3,6 +3,7 @@ package com.example.moneytreelight.utils
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import javax.inject.Singleton
+import kotlin.jvm.Throws
 import kotlin.reflect.KClass
 
 /**

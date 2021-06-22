@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.moneytreelight.R
 import kotlinx.android.synthetic.main.recyclerview_item_account_group.view.*
 
-class AccountsGroupAdapter(private var accountGroupList: List<AccountGroup>, var context: Context, var transactionListener: TransactionListener) :
-    RecyclerView.Adapter<AccountsGroupAdapter.AccountHolder>() {
+class AccountsGroupAdapter(private var accountGroupList: List<AccountGroup>, var context: Context, private var transactionListener: TransactionListener) :
+        RecyclerView.Adapter<AccountsGroupAdapter.AccountHolder>() {
 
     override fun onBindViewHolder(holder: AccountHolder, position: Int) {
         val accountGroup = accountGroupList[position]
@@ -19,8 +19,8 @@ class AccountsGroupAdapter(private var accountGroupList: List<AccountGroup>, var
     }
 
     override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
+            parent: ViewGroup,
+            viewType: Int
     ): AccountHolder {
         val inflatedView = parent.inflate(R.layout.recyclerview_item_account_group, false)
         return AccountHolder(inflatedView)
@@ -38,7 +38,7 @@ class AccountsGroupAdapter(private var accountGroupList: List<AccountGroup>, var
 
         fun bindAccountGroup(accountGroup: AccountGroup, transactionListener: TransactionListener) {
             this.accountGroup = accountGroup
-            view.institution.text = accountGroup.institution
+            view.tv_institution.text = accountGroup.institution
 
             view.rv_child.apply {
                 layoutManager = LinearLayoutManager(context)

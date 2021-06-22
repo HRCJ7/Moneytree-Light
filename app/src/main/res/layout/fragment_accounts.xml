@@ -8,7 +8,7 @@
     tools:context=".ui.account.AccountsFragment">
 
     <TextView
-        android:id="@+id/total"
+        android:id="@+id/tv_total"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:background="@color/colorPrimary"
@@ -26,13 +26,13 @@
         android:layout_width="match_parent"
         android:background="@color/colorSecondary"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintBottom_toTopOf="@+id/tv_add_money"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/total" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_total" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tv_add_money"
         android:layout_width="0dp"
         android:layout_height="100dp"
         android:layout_marginBottom="10dp"
@@ -44,4 +44,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="@color/white"
+        android:indeterminate="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_total" />
 </androidx.constraintlayout.widget.ConstraintLayout>

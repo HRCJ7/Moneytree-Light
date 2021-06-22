@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/institution"
+        android:id="@+id/tv_institution"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginTop="5dp"
@@ -26,7 +26,7 @@
         android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/institution" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_institution" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_child"

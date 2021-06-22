@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
-import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import com.example.moneytreelight.MoneytreeApplication
 import com.example.moneytreelight.di.component.DaggerFragmentComponent
@@ -30,19 +29,19 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
     }
 
     private fun buildFragmentComponent() =
-        DaggerFragmentComponent
-            .builder()
-            .applicationComponent((requireContext().applicationContext as MoneytreeApplication).applicationComponent)
-            .fragmentModule(FragmentModule(this))
-            .build()
+            DaggerFragmentComponent
+                    .builder()
+                    .applicationComponent((requireContext().applicationContext as MoneytreeApplication).applicationComponent)
+                    .fragmentModule(FragmentModule(this))
+                    .build()
 
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? =
-        inflater.inflate(provideLayoutId(), container, false)
+            inflater.inflate(provideLayoutId(), container, false)
 
     protected open fun setupObservers() {
 

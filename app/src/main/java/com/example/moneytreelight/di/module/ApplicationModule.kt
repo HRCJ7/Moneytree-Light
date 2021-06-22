@@ -2,7 +2,10 @@ package com.example.moneytreelight.di.module
 
 import android.app.Application
 import android.content.Context
+import android.content.SharedPreferences
+import androidx.room.Room
 import com.example.moneytreelight.MoneytreeApplication
+import com.example.moneytreelight.data.local.db.DatabaseService
 import com.example.moneytreelight.data.local.file.LocalFileService
 import com.example.moneytreelight.di.ApplicationContext
 import dagger.Module
@@ -31,5 +34,22 @@ class ApplicationModule(private val application: MoneytreeApplication) {
     @Provides
     @Singleton
     fun provideLocalFileService(): LocalFileService = LocalFileService(application)
+
+    /**
+     * We need to write @Singleton on the provide method if we are create the instance inside this method
+     * to make it singleton. Even if we have written @Singleton on the instance's class
+     */
+    @Provides
+    @Singleton
+    fun provideDatabaseService(): DatabaseService =
+            Room.databaseBuilder(
+                    application, DatabaseService::class.java,
+                    "moneytree-project-db"
+            ).build()
+
+    @Provides
+    @Singleton
+    fun provideSharedPreferences(): SharedPreferences =
+            application.getSharedPreferences("moneytree-project-prefs", Context.MODE_PRIVATE)
 
 }

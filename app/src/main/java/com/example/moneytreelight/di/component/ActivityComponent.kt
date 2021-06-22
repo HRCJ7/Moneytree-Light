@@ -4,7 +4,6 @@ import com.example.moneytreelight.di.ActivityScope
 import com.example.moneytreelight.di.module.ActivityModule
 import com.example.moneytreelight.ui.main.MainActivity
 import dagger.Component
-import io.reactivex.rxjava3.disposables.CompositeDisposable
 
 @ActivityScope
 @Component(

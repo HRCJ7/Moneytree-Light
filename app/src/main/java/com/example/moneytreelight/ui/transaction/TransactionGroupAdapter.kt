@@ -9,7 +9,7 @@ import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moneytreelight.R
-import com.example.moneytreelight.data.model.transaction.NewTransaction
+import com.example.moneytreelight.data.local.db.entity.TransactionEntity
 import kotlinx.android.synthetic.main.recyclerview_item_account_group.view.rv_child
 import kotlinx.android.synthetic.main.recyclerview_item_transaction_group.view.*
 
@@ -42,12 +42,12 @@ class TransactionGroupAdapter(private var transactionGroupList: List<Transaction
         @SuppressLint("SetTextI18n")
         fun bindAccountGroup(transactionGroup: TransactionGroup, currency: String?) {
             this.transactionGroup = transactionGroup
-            view.month.text = getMonthAndYear(transactionGroup.month)
-            view.deposit.text =
-                currency + getDepositValue(transactionGroup.transactionList).toString()
-            view.withdrowal.text =
-                "-$currency" + kotlin.math.abs(getWithdrawalValue(transactionGroup.transactionList))
-                    .toString()
+            view.tv_month.text = getMonthAndYear(transactionGroup.month)
+            view.tv_deposit.text =
+                    currency + getDepositValue(transactionGroup.transactionList).toString()
+            view.tv_withdrowal.text =
+                    "-$currency" + kotlin.math.abs(getWithdrawalValue(transactionGroup.transactionList))
+                            .toString()
             view.rv_child.apply {
                 layoutManager = LinearLayoutManager(context)
                 adapter = currency?.let { TransactionAdapter(transactionGroup.transactionList, it) }
@@ -75,7 +75,7 @@ class TransactionGroupAdapter(private var transactionGroupList: List<Transaction
             return "$monthInWord $year"
         }
 
-        private fun getDepositValue(transactionList: List<NewTransaction>): Float {
+        private fun getDepositValue(transactionList: List<TransactionEntity>): Float {
             var total = 0.0F
             transactionList.forEach {
                 if (it.amount > 0) {
@@ -85,7 +85,7 @@ class TransactionGroupAdapter(private var transactionGroupList: List<Transaction
             return total
         }
 
-        private fun getWithdrawalValue(transactionList: List<NewTransaction>): Float {
+        private fun getWithdrawalValue(transactionList: List<TransactionEntity>): Float {
             var total = 0.0F
             transactionList.forEach {
                 if (it.amount < 0) {

@@ -26,14 +26,6 @@
     },
     {
       "account_id": 2,
-      "amount": -421.0,
-      "category_id": 112,
-      "date": "2016-05-01T00:00:00+09:00",
-      "description": "\u30b9\u30bf\u30fc\u30d0\u30c3\u30af\u30b9 \u539f\u5bbf\u5e97",
-      "id": 23
-    },
-    {
-      "account_id": 2,
       "amount": 5000.0,
       "category_id": 112,
       "date": "2017-04-19T00:00:00+09:00",
