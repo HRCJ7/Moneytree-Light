@@ -61,3 +61,6 @@ I searched about this warning and in some places mentioned this because of Andro
    which are currently inside in Adapter classes and View Holder classes
 
 3) Complete remain user cases
+
+
+✨ Thank you! ✨
