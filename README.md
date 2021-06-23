@@ -40,7 +40,7 @@ Repository and other data sources are considered as models.
 ## Known issues:
 One unit test case get failed due to database issue.Could not identify the real issue.
 
-## Undandled warnings:
+## Unhandled warnings:
 
 ```sh
 The 'kotlin-android-extensions' Gradle plugin is deprecated.
