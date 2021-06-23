@@ -3,7 +3,7 @@ This project is designed for the user who needs to manage their accounts and che
 
 ## Project Infomation 
 
-## Project Architecture:
+ ## Project Architecture:
 
  Application architecture based on MVVM pattern.According to the below image these main layers are used in the App. Majorly Activity and Fragments are considered as views. Most of the views are linked with dedicated viewmodels. In the viewmodels most of the logic handled related to views.
 Repository and other data sources are considered as models.
