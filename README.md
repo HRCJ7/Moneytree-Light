@@ -1,5 +1,6 @@
 # Moneytree-Light
-This project is designed for the User who is to manage their accounts and check thransaction informations.
+This project is designed for the user who needs to manage their accounts and check thransaction informations.
+
 ## Project Infomation 
 
 ## Project Architecture:
